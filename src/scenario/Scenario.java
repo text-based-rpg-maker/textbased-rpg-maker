@@ -4,9 +4,8 @@ public class Scenario{
 
 	protected ScenarioState state;
 	
-	// Ações que o jogador pode executar em cada cenário
-	public Scenario() {
-		state = new DefaultScenario();
+	public Scenario(ScenarioState state) {
+		this.state = state;
 	}
 	public void goNorth(){
 		state = state.goNorth();
