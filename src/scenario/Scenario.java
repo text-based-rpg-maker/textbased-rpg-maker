@@ -1,7 +1,5 @@
 package scenario;
 
-import java.util.Scanner;
-
 public class Scenario{
 
 	protected ScenarioState state;
