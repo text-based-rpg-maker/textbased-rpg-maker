@@ -71,7 +71,16 @@ public abstract class Location implements ScenarioState {
 		if(item != null)
 			System.out.println(item.getDescription());
 	}
-
+	
+	private boolean canMove(ScenarioState scenario) {
+		if(scenario == null) {
+			System.out.println("Não posso mover daqui");
+			return false;
+		} else {
+			move(scenario);
+			return true;
+		}
+	}
 	@Override
 	public void showOptions() {
 		boolean exit;
@@ -92,23 +101,23 @@ public abstract class Location implements ScenarioState {
 			
 			switch(choice) {
 			case "a":
-				System.out.println("Não posso mover daqui");
-				exit = false;
+				exit = canMove(northLocation());
+				break;
 			case "b":
-				System.out.println("Não posso mover daqui");
-				exit = false;
+				exit = canMove(southLocation());
 				break;
 			case "c":
-				System.out.println("Não posso mover daqui");
-				exit = false;
+				exit = canMove(westLocation());
 				break;
 			case "d":
-				System.out.println("Não posso mover daqui");
-				exit = false;
+				exit = canMove(eastLocation());
 				break;
 			case "e":
 				exit = false;
-				this.getItem();
+				if (this.item != null)
+					this.getItem();
+				else
+					System.out.println("Não há nada para pegar");
 				break;
 			default:
 				System.out.println("Escolha uma opção válida");
