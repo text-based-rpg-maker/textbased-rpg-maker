@@ -5,17 +5,17 @@ import java.util.Scanner;
 public class DefaultScenario implements ScenarioState{
 	
 	private Item item;
+	
+	private ScenarioState nextStep;
 
 	public DefaultScenario(){
 		
-		behavior();
 	}
 	
 	public DefaultScenario(Item item){
 		
 		this.item = item;
 		
-		behavior();
 	}
 	
 	public void behavior(){
@@ -25,34 +25,19 @@ public class DefaultScenario implements ScenarioState{
 	}
 	
 	@Override
-	public ScenarioState goNorth(){
-		ScenarioState secondScenario = new SecondScenario();
-		if (Inventory.getItens().contains(secondScenario.unlockingItem())){
-			System.out.println("Indo para o segundo cenário!");
-			return secondScenario;
-		} else {
+	public ScenarioState move(ScenarioState state){
+		if (state.isLocked() && !Inventory.getItens().contains(state.unlockingItem())){
 			System.out.println("O caminho está bloqueado!");
-			return this;
+			nextStep = this;
+		} else {
+			System.out.println("Indo para outro cenário!");
+			nextStep = state;
 		}
-		
+		return null;
 	}
 	
-	@Override
-	public ScenarioState goSouth(){
-		System.out.println("Não há caminho para o sul!");
-		return this;
-	}
-	
-	@Override
-	public ScenarioState goWest(){
-		System.out.println("Não há caminho para o oeste");
-		return this;
-	}
-	
-	@Override
-	public ScenarioState goEast(){
-		System.out.println("Não há caminho para o leste");
-		return this;
+	public ScenarioState getNextStep() {
+		return nextStep;
 	}
 
 	@Override
@@ -63,11 +48,6 @@ public class DefaultScenario implements ScenarioState{
 		}else{
 			this.item = null;
 		}
-		return this;
-	}
-	@Override
-	public ScenarioState useItem() {
-		System.out.println("Não houve nenhum efeito");
 		return this;
 	}
 
@@ -93,6 +73,7 @@ public class DefaultScenario implements ScenarioState{
 	@Override
 	public void showOptions() {
 		boolean exit;
+		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
 		String choice = "null";
 		do {
@@ -103,30 +84,28 @@ public class DefaultScenario implements ScenarioState{
 			System.out.println("c) Ir para o oeste.");
 			System.out.println("d) Ir para o leste.");
 			System.out.println("e) Pegar item.");
-			System.out.println("f) Usar item.");
 			
 			choice = keyboard.nextLine();
 			
 			switch(choice) {
 			case "a":
-				this.goNorth();
+				this.move(new SecondScenario());
 				break;
 			case "b":
-				this.goSouth();
+				System.out.println("Não posso mover daqui");
+				exit=false;
 				break;
 			case "c":
-				this.goWest();
+				System.out.println("Não posso mover daqui");
+				exit=false;
 				break;
 			case "d":
-				this.goEast();
+				System.out.println("Não posso mover daqui");
+				exit=false;
 				break;
 			case "e":
 				exit = false;
 				this.getItem();
-				break;
-			case "f":
-				exit = false;
-				this.useItem();
 				break;
 			default:
 				System.out.println("Escolha uma opção válida");
@@ -134,10 +113,8 @@ public class DefaultScenario implements ScenarioState{
 				break;
 		}
 			
-		
 		} while(!exit);
 		
-		keyboard.close();
 	}
 
 	@Override
@@ -147,14 +124,14 @@ public class DefaultScenario implements ScenarioState{
 	}
 
 	@Override
-	public boolean isLocked() {
+	public Item unlockingItem() {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	@Override
-	public int unlockingItem() {
+	public boolean isLocked() {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 }
