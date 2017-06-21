@@ -26,13 +26,20 @@ public class DefaultScenario implements ScenarioState{
 	
 	@Override
 	public ScenarioState goNorth(){
-		System.out.println("Não há caminho para o norte");
-		return this;
+		ScenarioState secondScenario = new SecondScenario();
+		if (Inventory.getItens().contains(secondScenario.unlockingItem())){
+			System.out.println("Indo para o segundo cenário!");
+			return secondScenario;
+		} else {
+			System.out.println("O caminho está bloqueado!");
+			return this;
+		}
+		
 	}
 	
 	@Override
 	public ScenarioState goSouth(){
-		System.out.println("Se movendo para o sul!");
+		System.out.println("Não há caminho para o sul!");
 		return this;
 	}
 	
@@ -137,5 +144,17 @@ public class DefaultScenario implements ScenarioState{
 	public void handleOption() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean isLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int unlockingItem() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
