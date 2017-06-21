@@ -1,6 +1,9 @@
-package scenario;
+package com.textbasedrpgmaker.core.scenario;
 
 import java.util.Scanner;
+
+import com.textbasedrpgmaker.core.item.Inventory;
+import com.textbasedrpgmaker.core.item.Item;
 
 public abstract class Location implements ScenarioState {
 	

@@ -1,4 +1,4 @@
-package scenario;
+package com.textbasedrpgmaker.core.item;
 
 import java.util.ArrayList;
 import java.util.List;
