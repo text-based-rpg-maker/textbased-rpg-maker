@@ -1,4 +1,4 @@
-package scenario;
+package com.textbasedrpgmaker.core.scenario;
 
 public class Scenario {
 

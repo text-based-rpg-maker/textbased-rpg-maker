@@ -1,4 +1,6 @@
-package scenario;
+package com.textbasedrpgmaker.core.scenario;
+
+import com.textbasedrpgmaker.core.item.Item;
 
 public interface ScenarioState {
 	
