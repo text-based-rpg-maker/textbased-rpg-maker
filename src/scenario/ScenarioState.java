@@ -1,14 +1,18 @@
 package scenario;
 
 public interface ScenarioState {
+	
 	void showDescription();
 	void showItem();
 	void showOptions();
 	void behavior();
-	void handleOption();
 	boolean isLocked();
 	ScenarioState getNextStep();
+	ScenarioState northLocation();
+	ScenarioState southLocation();
+	ScenarioState eastLocation();
+	ScenarioState westLocation();
 	Item unlockingItem();
-	ScenarioState move(ScenarioState state);
+	void move(ScenarioState state);
 	ScenarioState getItem();
 }
