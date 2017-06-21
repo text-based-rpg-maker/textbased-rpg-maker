@@ -3,8 +3,22 @@ package scenario;
 import java.util.Scanner;
 
 public class DefaultScenario implements ScenarioState{
+	
+	private Item item;
 
 	public DefaultScenario(){
+		
+		behavior();
+	}
+	
+	public DefaultScenario(Item item){
+		
+		this.item = item;
+		
+		behavior();
+	}
+	
+	public void behavior(){
 		showDescription();
 		showItem();
 		showOptions();
@@ -36,7 +50,12 @@ public class DefaultScenario implements ScenarioState{
 
 	@Override
 	public ScenarioState getItem() {
-		System.out.println("Não há itens para pegar!");
+		if(!Inventory.getItens().contains(this.item)){
+			Inventory.addItemToInventory(this.item);
+			System.out.println("O item " + this.item.getName() + " foi adicionado ao inventário");
+		}else{
+			this.item = null;
+		}
 		return this;
 	}
 	@Override
@@ -57,17 +76,20 @@ public class DefaultScenario implements ScenarioState{
 
 	@Override
 	public void showItem() {
-		System.out.println("Uma chave dourada brilha no fim do corredor.");
 		
+		if(item != null){
+			System.out.println(item.getDescription());
+			
+		}		
 	}
 
 	@Override
 	public void showOptions() {
-		boolean validOption;
+		boolean exit;
 		Scanner keyboard = new Scanner(System.in);
 		String choice = "null";
 		do {
-			validOption = true;
+			exit = true;
 			System.out.println("Escolha alguma opção: ");
 			System.out.println("a) Ir para o norte.");
 			System.out.println("b) Ir para o sul.");
@@ -92,19 +114,21 @@ public class DefaultScenario implements ScenarioState{
 				this.goEast();
 				break;
 			case "e":
+				exit = false;
 				this.getItem();
 				break;
 			case "f":
+				exit = false;
 				this.useItem();
 				break;
 			default:
 				System.out.println("Escolha uma opção válida");
-				validOption = false;
+				exit= false;
 				break;
 		}
 			
 		
-		} while(!validOption);
+		} while(!exit);
 		
 		keyboard.close();
 	}
