@@ -2,22 +2,34 @@ package scenario;
 
 import java.util.Scanner;
 
-public class DefaultScenario implements ScenarioState{
+public abstract class Location implements ScenarioState {
 	
 	private Item item;
-	
 	private ScenarioState nextStep;
 
-	public DefaultScenario(){
-		
+	public Location(){
 	}
 	
-	public DefaultScenario(Item item){
-		
+	public Location(Item item){
 		this.item = item;
-		
 	}
 	
+	@Override
+	public abstract void showDescription();
+
+	@Override
+	public abstract ScenarioState northLocation();
+	
+	@Override
+	public abstract ScenarioState southLocation();
+	
+	@Override
+	public abstract ScenarioState eastLocation();
+	
+	@Override
+	public abstract ScenarioState westLocation();
+	
+	@Override
 	public void behavior(){
 		showDescription();
 		showItem();
@@ -25,7 +37,7 @@ public class DefaultScenario implements ScenarioState{
 	}
 	
 	@Override
-	public ScenarioState move(ScenarioState state){
+	public void move(ScenarioState state){
 		if (state.isLocked() && !Inventory.getItens().contains(state.unlockingItem())){
 			System.out.println("O caminho está bloqueado!");
 			nextStep = this;
@@ -33,9 +45,9 @@ public class DefaultScenario implements ScenarioState{
 			System.out.println("Indo para outro cenário!");
 			nextStep = state;
 		}
-		return null;
 	}
 	
+	@Override
 	public ScenarioState getNextStep() {
 		return nextStep;
 	}
@@ -45,29 +57,16 @@ public class DefaultScenario implements ScenarioState{
 		if(!Inventory.getItens().contains(this.item)){
 			Inventory.addItemToInventory(this.item);
 			System.out.println("O item " + this.item.getName() + " foi adicionado ao inventário");
-		}else{
+		} else {
 			this.item = null;
 		}
 		return this;
 	}
 
 	@Override
-	public void showDescription() {
-		System.out.println("Nome: Cenário Inicial");
-		System.out.println("Você entra pela porta de madeira da velha pousada, há muito abandonada.");
-		System.out.println("No interior, há um velho e empoeirado relógio de parede.");
-		System.out.println("Não há som algum. Um forte cheiro de madeira velha permeia o ambiente.");
-		System.out.println("Há um corredor ao norte.");
-		
-	}
-
-	@Override
 	public void showItem() {
-		
-		if(item != null){
+		if(item != null)
 			System.out.println(item.getDescription());
-			
-		}		
 	}
 
 	@Override
@@ -76,6 +75,7 @@ public class DefaultScenario implements ScenarioState{
 		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
 		String choice = "null";
+		
 		do {
 			exit = true;
 			System.out.println("Escolha alguma opção: ");
@@ -89,19 +89,19 @@ public class DefaultScenario implements ScenarioState{
 			
 			switch(choice) {
 			case "a":
-				this.move(new SecondScenario());
-				break;
+				System.out.println("Não posso mover daqui");
+				exit = false;
 			case "b":
 				System.out.println("Não posso mover daqui");
-				exit=false;
+				exit = false;
 				break;
 			case "c":
 				System.out.println("Não posso mover daqui");
-				exit=false;
+				exit = false;
 				break;
 			case "d":
 				System.out.println("Não posso mover daqui");
-				exit=false;
+				exit = false;
 				break;
 			case "e":
 				exit = false;
@@ -109,7 +109,7 @@ public class DefaultScenario implements ScenarioState{
 				break;
 			default:
 				System.out.println("Escolha uma opção válida");
-				exit= false;
+				exit = false;
 				break;
 		}
 			
@@ -118,20 +118,12 @@ public class DefaultScenario implements ScenarioState{
 	}
 
 	@Override
-	public void handleOption() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public Item unlockingItem() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isLocked() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

@@ -1,6 +1,6 @@
 package scenario;
 
-public class Scenario{
+public class Scenario {
 
 	protected ScenarioState state;
 	
@@ -17,7 +17,5 @@ public class Scenario{
 		this.state.behavior();
 		changeState();
 	}
-	public void getItem(){
-		state = state.getItem();
-	}
+	
 }

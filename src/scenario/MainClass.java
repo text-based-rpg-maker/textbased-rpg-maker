@@ -10,7 +10,7 @@ public class MainClass {
 		
 		ItemCollection.registerItem(item);
 		
-		Scenario scenario = new Scenario(new DefaultScenario(item));
+		Scenario scenario = new Scenario(null);
 		
 	}
 
