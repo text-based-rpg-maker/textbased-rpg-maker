@@ -5,6 +5,8 @@ public interface ScenarioState {
 	void showItem();
 	void showOptions();
 	void handleOption();
+	boolean isLocked();
+	int unlockingItem();
 	ScenarioState goNorth();
 	ScenarioState goSouth();
 	ScenarioState goWest();
