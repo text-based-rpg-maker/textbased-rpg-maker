@@ -45,4 +45,34 @@ public class Swamp extends Location {
 		return null;
 	}
 
+	@Override
+	public String optionA() {
+		// TODO Auto-generated method stub
+		return "Ir em direção ao castelo";
+	}
+
+	@Override
+	public String optionB() {
+		// TODO Auto-generated method stub
+		return "Vagar no pântano para sempre";
+	}
+
+	@Override
+	public String optionC() {
+		// TODO Auto-generated method stub
+		return "Vagar no pântano para sempre";
+	}
+
+	@Override
+	public String optionD() {
+		// TODO Auto-generated method stub
+		return "Vagar no pântano para sempre";
+	}
+
+	@Override
+	public String optionItem() {
+		// TODO Auto-generated method stub
+		return "Pegar chave do castelo";
+	}
+
 }
