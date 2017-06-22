@@ -39,22 +39,22 @@ public class Castle extends Location {
 	}
 	
 	@Override
-	public String optionA() {
+	public String optionNorth() {
 		// TODO Auto-generated method stub
 		return "Explorar ala norte";
 	}
 	@Override
-	public String optionB() {
+	public String optionSouth() {
 		// TODO Auto-generated method stub
 		return "Retornar ao pântano";
 	}
 	@Override
-	public String optionC() {
+	public String optionEast() {
 		// TODO Auto-generated method stub
 		return "Explorar cozinha";
 	}
 	@Override
-	public String optionD() {
+	public String optionWest() {
 		// TODO Auto-generated method stub
 		return "Explorar catacumbas";
 	}

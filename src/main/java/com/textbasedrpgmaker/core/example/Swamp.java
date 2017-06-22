@@ -39,22 +39,22 @@ public class Swamp extends Location {
 		return null;
 	}
 
-	public String optionA() {
+	public String optionNorth() {
 		// TODO Auto-generated method stub
 		return "Ir em direção ao castelo";
 	}
 
-	public String optionB() {
+	public String optionSouth() {
 		// TODO Auto-generated method stub
 		return "Vagar no pântano para sempre";
 	}
 
-	public String optionC() {
+	public String optionEast() {
 		// TODO Auto-generated method stub
 		return "Vagar no pântano para sempre";
 	}
 
-	public String optionD() {
+	public String optionWest() {
 		// TODO Auto-generated method stub
 		return "Vagar no pântano para sempre";
 	}

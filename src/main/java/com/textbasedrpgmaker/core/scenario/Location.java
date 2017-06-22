@@ -80,19 +80,19 @@ public abstract class Location {
 		}
 	}
 	
-	public abstract String optionA();
-	public abstract String optionB();
-	public abstract String optionC();
-	public abstract String optionD();
+	public abstract String optionNorth();
+	public abstract String optionSouth();
+	public abstract String optionEast();
+	public abstract String optionWest();
 	public abstract String optionItem();
 
 	
 	private void showMenu() {
 		System.out.println("Escolha alguma opção: ");
-		System.out.println("a) " + optionA());
-		System.out.println("b) " + optionB());
-		System.out.println("c) " + optionC());
-		System.out.println("d) " + optionD());
+		System.out.println("a) " + optionNorth());
+		System.out.println("b) " + optionSouth());
+		System.out.println("c) " + optionEast());
+		System.out.println("d) " + optionWest());
 		if(this.item != null && !hasItem())
 			System.out.println("e) " + optionItem());
 	}
@@ -117,6 +117,7 @@ public abstract class Location {
 		Scanner keyboard = new Scanner(System.in);
 		String choice = "null";
 		choice = keyboard.nextLine();
+//		showMenu();			
 		
 			switch(choice) {
 			case "a":
