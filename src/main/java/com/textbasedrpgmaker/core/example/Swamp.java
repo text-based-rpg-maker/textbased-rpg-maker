@@ -1,10 +1,19 @@
 package com.textbasedrpgmaker.core.example;
 
+import com.textbasedrpgmaker.core.item.Item;
 import com.textbasedrpgmaker.core.scenario.Location;
 import com.textbasedrpgmaker.core.scenario.ScenarioState;
 
 public class Swamp extends Location {
 
+	public Swamp(Item item) {
+		super(item);
+	}
+	
+	public Swamp() {
+		super();
+	}
+	
 	@Override
 	public void showDescription() {
 		System.out.println("Pântano da Perdição");

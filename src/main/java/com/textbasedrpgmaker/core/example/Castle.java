@@ -1,5 +1,7 @@
 package com.textbasedrpgmaker.core.example;
 
+import com.textbasedrpgmaker.core.item.Item;
+import com.textbasedrpgmaker.core.item.ItemCollection;
 import com.textbasedrpgmaker.core.scenario.Location;
 import com.textbasedrpgmaker.core.scenario.ScenarioState;
 
@@ -34,6 +36,16 @@ public class Castle extends Location {
 	public ScenarioState westLocation() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public Item unlockingItem() {
+		return ItemCollection.getItemById(1);
+	}
+	
+	@Override
+	public boolean isLocked() {
+		return true;
 	}
 
 }
