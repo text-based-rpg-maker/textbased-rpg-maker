@@ -47,5 +47,30 @@ public class Castle extends Location {
 	public boolean isLocked() {
 		return true;
 	}
+	@Override
+	public String optionA() {
+		// TODO Auto-generated method stub
+		return "Explorar ala norte";
+	}
+	@Override
+	public String optionB() {
+		// TODO Auto-generated method stub
+		return "Retornar ao pântano";
+	}
+	@Override
+	public String optionC() {
+		// TODO Auto-generated method stub
+		return "Explorar cozinha";
+	}
+	@Override
+	public String optionD() {
+		// TODO Auto-generated method stub
+		return "Explorar catacumbas";
+	}
+	@Override
+	public String optionItem() {
+		// TODO Auto-generated method stub
+		return "Tentar pegar armadura";
+	}
 
 }

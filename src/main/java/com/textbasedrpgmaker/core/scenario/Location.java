@@ -81,6 +81,23 @@ public abstract class Location implements ScenarioState {
 			return true;
 		}
 	}
+	
+	public abstract String optionA();
+	public abstract String optionB();
+	public abstract String optionC();
+	public abstract String optionD();
+	public abstract String optionItem();
+
+	
+	public void showMenu() {
+		System.out.println("Escolha alguma opção: ");
+		System.out.println("a) " + optionA());
+		System.out.println("b) " + optionB());
+		System.out.println("c) " + optionC());
+		System.out.println("d) " + optionD());
+		System.out.println("e) " + optionItem());
+	}
+	
 	@Override
 	public void showOptions() {
 		boolean exit;
@@ -90,12 +107,12 @@ public abstract class Location implements ScenarioState {
 		
 		do {
 			exit = true;
-			System.out.println("Escolha alguma opção: ");
-			System.out.println("a) Ir para o norte.");
-			System.out.println("b) Ir para o sul.");
-			System.out.println("c) Ir para o oeste.");
-			System.out.println("d) Ir para o leste.");
-			System.out.println("e) Pegar item.");
+			showMenu();
+//			System.out.println("a) Ir para o norte.");
+//			System.out.println("b) Ir para o sul.");
+//			System.out.println("c) Ir para o oeste.");
+//			System.out.println("d) Ir para o leste.");
+//			System.out.println("e) Pegar item.");
 			
 			choice = keyboard.nextLine();
 			
