@@ -34,8 +34,8 @@ public abstract class Location {
 		showOptions();
 	}
 	
-	public void move(Location state){
-		if (state.isLocked() && !Inventory.getItens().contains(state.unlockingItem())){
+	public void move(Location  state){
+		if ((state.unlockingItem() != null) && !Inventory.getItens().contains(state.unlockingItem())){
 			System.out.println("O caminho está bloqueado!");
 			nextStep = this;
 		} else {
@@ -158,7 +158,4 @@ public abstract class Location {
 		return null;
 	}
 
-	public boolean isLocked() {
-		return false;
-	}
 }

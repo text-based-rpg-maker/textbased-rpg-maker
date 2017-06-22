@@ -39,10 +39,6 @@ public class Castle extends Location {
 	}
 	
 	@Override
-	public boolean isLocked() {
-		return true;
-	}
-	@Override
 	public String optionA() {
 		// TODO Auto-generated method stub
 		return "Explorar ala norte";
