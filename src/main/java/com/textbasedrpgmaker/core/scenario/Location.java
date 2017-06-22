@@ -55,7 +55,7 @@ public abstract class Location implements ScenarioState {
 		return nextStep;
 	}
 	
-	public boolean hasItem() {
+	private boolean hasItem() {
 		if(Inventory.getItens().contains(this.item))
 			return true;
 		else
@@ -96,7 +96,7 @@ public abstract class Location implements ScenarioState {
 	public abstract String optionItem();
 
 	
-	public void showMenu() {
+	private void showMenu() {
 		System.out.println("Escolha alguma opção: ");
 		System.out.println("a) " + optionA());
 		System.out.println("b) " + optionB());
