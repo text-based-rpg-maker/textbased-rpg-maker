@@ -3,25 +3,25 @@ package com.textbasedrpgmaker.core.example;
 import com.textbasedrpgmaker.core.scenario.Location;
 import com.textbasedrpgmaker.core.scenario.ScenarioState;
 
-public class Castle extends Location {
+public class Swamp extends Location {
 
 	@Override
 	public void showDescription() {
-		System.out.println("O Palácio da Sina");
-		System.out.println("Um luxuoso e gigantesco castelo se ergue"
-				+ "\nno horizonte. Possui torres brancas, vitrais coloridos, portas duplas"
-				+ "\nimensas e altas muralhas.");
+		System.out.println("Pântano da Perdição");
+		System.out.println("O pântano diante de você se estende por infindaveis"
+				+ "\nquilômetros para todos os lados."
+				+ "\nÁrvores retorcidas, musgos e animais rastejantes dominam o ambiente.");
 	}
+
 	@Override
 	public ScenarioState northLocation() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Castle();
 	}
 
 	@Override
 	public ScenarioState southLocation() {
 		// TODO Auto-generated method stub
-		return new Swamp();
+		return null;
 	}
 
 	@Override
