@@ -16,6 +16,6 @@ public interface ScenarioState {
 	ScenarioState westLocation();
 	Item unlockingItem();
 	void move(ScenarioState state);
-	ScenarioState getItem();
+	ScenarioState putItemInInventory();
 	boolean chooseOption(boolean exit);
 }
