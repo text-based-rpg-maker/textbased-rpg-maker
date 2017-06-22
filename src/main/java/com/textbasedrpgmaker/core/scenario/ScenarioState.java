@@ -17,4 +17,5 @@ public interface ScenarioState {
 	Item unlockingItem();
 	void move(ScenarioState state);
 	ScenarioState getItem();
+	boolean chooseOption(boolean exit);
 }

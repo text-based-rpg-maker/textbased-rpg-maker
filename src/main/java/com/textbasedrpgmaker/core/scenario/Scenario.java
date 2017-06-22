@@ -12,7 +12,7 @@ public class Scenario {
 		this.state = state.getNextStep();
 	}
 	
-	public void behavior(){
+	public void behaviour(){
 		this.state.behaviour();
 	}
 	
