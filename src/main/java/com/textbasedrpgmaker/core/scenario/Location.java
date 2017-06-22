@@ -5,10 +5,10 @@ import java.util.Scanner;
 import com.textbasedrpgmaker.core.item.Inventory;
 import com.textbasedrpgmaker.core.item.Item;
 
-public abstract class Location implements ScenarioState {
+public abstract class Location {
 	
 	private Item item;
-	private ScenarioState nextStep;
+	private Location nextStep;
 
 	public Location(){
 	}
@@ -17,30 +17,24 @@ public abstract class Location implements ScenarioState {
 		this.item = item;
 	}
 	
-	@Override
 	public abstract void showDescription();
 
-	@Override
-	public abstract ScenarioState northLocation();
+	public abstract Location northLocation();
+
+	public abstract Location southLocation();
 	
-	@Override
-	public abstract ScenarioState southLocation();
+	public abstract Location eastLocation();
 	
-	@Override
-	public abstract ScenarioState eastLocation();
+	public abstract Location westLocation();
 	
-	@Override
-	public abstract ScenarioState westLocation();
-	
-	@Override
+
 	public void behavior(){
 		showDescription();
 		showItem();
 		showOptions();
 	}
 	
-	@Override
-	public void move(ScenarioState state){
+	public void move(Location state){
 		if (state.isLocked() && !Inventory.getItens().contains(state.unlockingItem())){
 			System.out.println("O caminho está bloqueado!");
 			nextStep = this;
@@ -50,8 +44,7 @@ public abstract class Location implements ScenarioState {
 		}
 	}
 	
-	@Override
-	public ScenarioState getNextStep() {
+	public Location getNextStep() {
 		return nextStep;
 	}
 	
@@ -62,8 +55,7 @@ public abstract class Location implements ScenarioState {
 			return false;
 	}
 
-	@Override
-	public ScenarioState getItem() {
+	public Location getItem() {
 		if(!hasItem()){
 			Inventory.addItemToInventory(this.item);
 			System.out.println("O item " + this.item.getName() + " foi adicionado ao inventário");
@@ -73,13 +65,12 @@ public abstract class Location implements ScenarioState {
 		return this;
 	}
 
-	@Override
 	public void showItem() {
 		if(item != null && !hasItem())
 			System.out.println(item.getDescription());
 	}
 	
-	private boolean canMove(ScenarioState scenario) {
+	private boolean canMove(Location scenario) {
 		if(scenario == null) {
 			System.out.println("Não posso mover daqui");
 			return false;
@@ -106,7 +97,6 @@ public abstract class Location implements ScenarioState {
 			System.out.println("e) " + optionItem());
 	}
 	
-	@Override
 	public void showOptions() {
 		boolean exit;
 		@SuppressWarnings("resource")
@@ -154,12 +144,10 @@ public abstract class Location implements ScenarioState {
 		
 	}
 
-	@Override
 	public Item unlockingItem() {
 		return null;
 	}
 
-	@Override
 	public boolean isLocked() {
 		return false;
 	}
