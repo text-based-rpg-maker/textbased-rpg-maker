@@ -32,8 +32,7 @@ public abstract class Location implements ScenarioState {
 	@Override
 	public abstract ScenarioState westLocation();
 	
-	@Override
-	public void behavior(){
+	public void behaviour(){
 		showDescription();
 		showItem();
 		showOptions();

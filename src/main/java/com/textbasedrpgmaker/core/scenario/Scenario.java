@@ -13,7 +13,7 @@ public class Scenario {
 	}
 	
 	public void behavior(){
-		this.state.behavior();
+		this.state.behaviour();
 	}
 	
 }
