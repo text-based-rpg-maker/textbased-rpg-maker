@@ -23,7 +23,7 @@ public class Castle extends Location {
 	@Override
 	public ScenarioState southLocation() {
 		// TODO Auto-generated method stub
-		return new Swamp();
+		return new Swamp(ItemCollection.getItemById(1));
 	}
 
 	@Override

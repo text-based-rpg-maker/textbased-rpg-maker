@@ -54,10 +54,17 @@ public abstract class Location implements ScenarioState {
 	public ScenarioState getNextStep() {
 		return nextStep;
 	}
+	
+	public boolean hasItem() {
+		if(Inventory.getItens().contains(this.item))
+			return true;
+		else
+			return false;
+	}
 
 	@Override
 	public ScenarioState getItem() {
-		if(!Inventory.getItens().contains(this.item)){
+		if(!hasItem()){
 			Inventory.addItemToInventory(this.item);
 			System.out.println("O item " + this.item.getName() + " foi adicionado ao inventário");
 		} else {
@@ -68,7 +75,7 @@ public abstract class Location implements ScenarioState {
 
 	@Override
 	public void showItem() {
-		if(item != null)
+		if(item != null && !hasItem())
 			System.out.println(item.getDescription());
 	}
 	
@@ -95,7 +102,8 @@ public abstract class Location implements ScenarioState {
 		System.out.println("b) " + optionB());
 		System.out.println("c) " + optionC());
 		System.out.println("d) " + optionD());
-		System.out.println("e) " + optionItem());
+		if(this.item != null && !hasItem())
+			System.out.println("e) " + optionItem());
 	}
 	
 	@Override
@@ -131,7 +139,7 @@ public abstract class Location implements ScenarioState {
 				break;
 			case "e":
 				exit = false;
-				if (this.item != null)
+				if (this.item != null && !hasItem())
 					this.getItem();
 				else
 					System.out.println("Não há nada para pegar");
