@@ -28,7 +28,7 @@ public abstract class Location {
 	public abstract Location westLocation();
 	
 
-	public void behavior(){
+	public void behaviour(){
 		showDescription();
 		showItem();
 		showOptions();

@@ -23,7 +23,7 @@ public class GamePlay {
 	}
 	public void startGame(){
 		while(!endGame){
-			scenario.behavior();
+			scenario.behaviour();
 			scenario.changeState();
 		}
 	}
