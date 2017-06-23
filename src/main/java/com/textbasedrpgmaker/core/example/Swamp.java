@@ -64,4 +64,21 @@ public class Swamp extends Location {
 		return "Pegar chave do castelo";
 	}
 
+	@Override
+	public String noItemMessage() {
+		// TODO Auto-generated method stub
+		return "Em meio ao lodo infidável, nada pode ser encontrado";
+	}
+
+	@Override
+	public String cannotMove() {
+		// TODO Auto-generated method stub
+		return "O pântano se estende ao infinito... Melhor não seguir nessa direção";
+	}
+
+	@Override
+	public String movingScenario() {
+		// TODO Auto-generated method stub
+		return "Com dificuldade, você atravessa o lodo do pântano";
+	}
 }

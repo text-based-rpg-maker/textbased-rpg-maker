@@ -63,5 +63,20 @@ public class Castle extends Location {
 		// TODO Auto-generated method stub
 		return "Tentar pegar armadura";
 	}
+	@Override
+	public String noItemMessage() {
+		// TODO Auto-generated method stub
+		return "Nada de interessante nesta parte do castelo";
+	}
+	@Override
+	public String cannotMove() {
+		// TODO Auto-generated method stub
+		return "Vozes sepulcrais ecoam do corredor... Melhor não seguir por este caminho";
+	}
+	@Override
+	public String movingScenario() {
+		// TODO Auto-generated method stub
+		return "Você decide sair desta área do castelo";
+	}
 
 }

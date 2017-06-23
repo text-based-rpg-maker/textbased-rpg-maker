@@ -39,7 +39,7 @@ public abstract class Location {
 			System.out.println("O caminho está bloqueado!");
 			nextStep = this;
 		} else {
-			System.out.println("Indo para outro cenário!");
+			System.out.println(this.movingScenario());
 			nextStep = state;
 		}
 	}
@@ -72,7 +72,7 @@ public abstract class Location {
 	
 	private boolean canMove(Location scenario) {
 		if(scenario == null) {
-			System.out.println("Não posso mover daqui");
+			System.out.println(this.cannotMove());
 			return false;
 		} else {
 			move(scenario);
@@ -86,6 +86,9 @@ public abstract class Location {
 	public abstract String optionWest();
 	public abstract String optionItem();
 
+	public abstract String noItemMessage();
+	public abstract String cannotMove();
+	public abstract String movingScenario();
 	
 	private void showMenu() {
 		System.out.println("Escolha alguma opção: ");
@@ -133,7 +136,11 @@ public abstract class Location {
 				exit = canMove(eastLocation());
 				break;
 			case "e":
-				exit = getItem(exit);
+				exit = false;
+				if (this.item != null && !hasItem())
+					this.getItem(exit);
+				else
+					System.out.println(this.noItemMessage());
 				break;
 			default:
 				exit = invalidOption(exit);
