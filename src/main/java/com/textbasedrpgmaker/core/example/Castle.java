@@ -3,37 +3,32 @@ package com.textbasedrpgmaker.core.example;
 import com.textbasedrpgmaker.core.item.Item;
 import com.textbasedrpgmaker.core.item.ItemCollection;
 import com.textbasedrpgmaker.core.scenario.Location;
-import com.textbasedrpgmaker.core.scenario.ScenarioState;
 
 public class Castle extends Location {
 
-	@Override
 	public void showDescription() {
 		System.out.println("O Palácio da Sina");
 		System.out.println("Um luxuoso e gigantesco castelo se ergue"
 				+ "\nno horizonte. Possui torres brancas, vitrais coloridos, portas duplas"
 				+ "\nimensas e altas muralhas.");
 	}
-	@Override
-	public ScenarioState northLocation() {
+	
+	public Location northLocation() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public ScenarioState southLocation() {
+	public Location southLocation() {
 		// TODO Auto-generated method stub
 		return new Swamp(ItemCollection.getItemById(1));
 	}
 
-	@Override
-	public ScenarioState eastLocation() {
+	public Location eastLocation() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public ScenarioState westLocation() {
+	public Location westLocation() {
 		// TODO Auto-generated method stub
 		return null;
 	}

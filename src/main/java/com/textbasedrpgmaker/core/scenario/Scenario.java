@@ -2,9 +2,9 @@ package com.textbasedrpgmaker.core.scenario;
 
 public class Scenario {
 
-	protected ScenarioState state;
+	protected Location state;
 	
-	public Scenario(ScenarioState state) {
+	public Scenario(Location state) {
 		this.state = state;
 	}
 	

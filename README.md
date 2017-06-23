@@ -7,7 +7,7 @@
 - [ ] estudar a possibilidade de colocar um arquivo de configuração de mensagens
 - [ ] fragmentar Location em outras classes
 - [x] corrigir behavior para behaviour
-- [ ] remover ScenarioState
+- [X] remover ScenarioState
 - [x] refatorar showOption
 - [x] privatizar alguns métodos para freezeSpots
 - [ ] implementar o exemplo
