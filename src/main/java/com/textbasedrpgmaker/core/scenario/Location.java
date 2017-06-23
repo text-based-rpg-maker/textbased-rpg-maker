@@ -62,7 +62,7 @@ public abstract class Location implements ScenarioState {
 	}
 
 	@Override
-	public ScenarioState getItem() {
+	public ScenarioState putItemInInventory() {
 		if(!hasItem()){
 			Inventory.addItemToInventory(this.item);
 			System.out.println("O item " + this.item.getName() + " foi adicionado ao inventário");
@@ -104,7 +104,20 @@ public abstract class Location implements ScenarioState {
 		if(this.item != null && !hasItem())
 			System.out.println("e) " + optionItem());
 	}
-	
+	public boolean getItem(boolean exit){
+		 		exit = false;
+		 		if (this.item != null && !hasItem())
+		 			this.putItemInInventory();
+		 		else
+		 			System.out.println("Não há nada para pegar");
+		 		return exit;
+	}
+	public boolean invalidChoice(boolean exit){
+		 		System.out.println("Escolha uma opção válida");
+		 		exit = false;
+		 		return exit;
+	}
+
 	public boolean chooseOption(boolean exit){
 		 		
 		String choice = "null";
@@ -128,15 +141,10 @@ public abstract class Location implements ScenarioState {
 				exit = canMove(eastLocation());
 				break;
 			case "e":
-				exit = false;
-				if (this.item != null && !hasItem())
-					this.getItem();
-				else
-					System.out.println("Não há nada para pegar");
+				exit = getItem(exit);
 				break;
 		default:
-				System.out.println("Escolha uma opção válida");
-				exit = false;
+				exit = invalidChoice(exit);
 				break;
 		}
 		return exit;

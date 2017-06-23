@@ -72,5 +72,10 @@ public class Castle extends Location {
 		// TODO Auto-generated method stub
 		return "Tentar pegar armadura";
 	}
+	@Override
+	public ScenarioState getItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

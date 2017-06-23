@@ -75,4 +75,10 @@ public class Swamp extends Location {
 		return "Pegar chave do castelo";
 	}
 
+	@Override
+	public ScenarioState getItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

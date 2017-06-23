@@ -18,4 +18,5 @@ public interface ScenarioState {
 	void move(ScenarioState state);
 	ScenarioState getItem();
 	boolean chooseOption(boolean exit);
+	ScenarioState putItemInInventory();
 }
