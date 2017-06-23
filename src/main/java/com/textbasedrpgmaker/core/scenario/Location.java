@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.textbasedrpgmaker.core.item.Inventory;
 import com.textbasedrpgmaker.core.item.Item;
+import com.textbasedrpgmaker.core.startgame.GamePlay;
 
 public abstract class Location {
 	
@@ -30,8 +31,12 @@ public abstract class Location {
 
 	public void behaviour(){
 		showDescription();
-		showItem();
-		showOptions();
+		if(GamePlay.isEndGame()) {
+			System.out.println("Fim");
+		} else {
+			showItem();
+			showOptions();
+		}
 	}
 	
 	public void move(Location  state){
