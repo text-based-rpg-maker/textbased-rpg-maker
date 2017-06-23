@@ -7,7 +7,7 @@ public interface ScenarioState {
 	void showDescription();
 	void showItem();
 	void showOptions();
-	void behavior();
+	void behaviour();
 	boolean isLocked();
 	ScenarioState getNextStep();
 	ScenarioState northLocation();

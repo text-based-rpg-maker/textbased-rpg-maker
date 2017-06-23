@@ -32,8 +32,7 @@ public abstract class Location implements ScenarioState {
 	@Override
 	public abstract ScenarioState westLocation();
 	
-	@Override
-	public void behavior(){
+	public void behaviour(){
 		showDescription();
 		showItem();
 		showOptions();
@@ -116,11 +115,6 @@ public abstract class Location implements ScenarioState {
 		do {
 			exit = true;
 			showMenu();
-//			System.out.println("a) Ir para o norte.");
-//			System.out.println("b) Ir para o sul.");
-//			System.out.println("c) Ir para o oeste.");
-//			System.out.println("d) Ir para o leste.");
-//			System.out.println("e) Pegar item.");
 			
 			choice = keyboard.nextLine();
 			
