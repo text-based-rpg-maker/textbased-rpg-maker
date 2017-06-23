@@ -79,4 +79,10 @@ public class Castle extends Location {
 		return "Você decide sair desta área do castelo";
 	}
 
+	@Override
+	public String endingMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

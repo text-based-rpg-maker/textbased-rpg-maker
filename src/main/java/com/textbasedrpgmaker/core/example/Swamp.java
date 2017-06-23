@@ -81,4 +81,10 @@ public class Swamp extends Location {
 		// TODO Auto-generated method stub
 		return "Com dificuldade, você atravessa o lodo do pântano";
 	}
+
+	@Override
+	public String endingMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
