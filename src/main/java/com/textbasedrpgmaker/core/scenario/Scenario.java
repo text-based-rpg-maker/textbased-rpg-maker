@@ -12,8 +12,8 @@ public class Scenario {
 		this.state = state.getNextStep();
 	}
 	
-	public void behavior(){
-		this.state.behavior();
+	public void behaviour(){
+		this.state.behaviour();
 	}
 	
 }

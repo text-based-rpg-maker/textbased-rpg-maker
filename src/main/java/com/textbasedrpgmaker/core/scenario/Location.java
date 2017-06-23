@@ -28,7 +28,7 @@ public abstract class Location {
 	public abstract Location westLocation();
 	
 
-	public void behavior(){
+	public void behaviour(){
 		showDescription();
 		showItem();
 		showOptions();
@@ -55,7 +55,7 @@ public abstract class Location {
 			return false;
 	}
 
-	public Location getItem() {
+	public Location putInInventory() {
 		if(!hasItem()){
 			Inventory.addItemToInventory(this.item);
 			System.out.println("O item " + this.item.getName() + " foi adicionado ao inventário");
@@ -97,23 +97,27 @@ public abstract class Location {
 			System.out.println("e) " + optionItem());
 	}
 	
-	public void showOptions() {
-		boolean exit;
+	private boolean invalidOption(boolean exit){
+		System.out.println("Escolha uma opção válida");
+		exit = false;
+		return exit;
+	}
+	
+	private boolean getItem(boolean exit){
+		exit = false;
+		if (this.item != null && !hasItem())
+			this.putInInventory();
+		else
+			System.out.println("Não há nada para pegar");
+		return exit;
+	}
+	
+	private boolean chooseOption(boolean exit){
 		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
 		String choice = "null";
+		choice = keyboard.nextLine();
 		
-		do {
-			exit = true;
-			showMenu();
-//			System.out.println("a) Ir para o norte.");
-//			System.out.println("b) Ir para o sul.");
-//			System.out.println("c) Ir para o oeste.");
-//			System.out.println("d) Ir para o leste.");
-//			System.out.println("e) Pegar item.");
-			
-			choice = keyboard.nextLine();
-			
 			switch(choice) {
 			case "a":
 				exit = canMove(northLocation());
@@ -128,17 +132,23 @@ public abstract class Location {
 				exit = canMove(eastLocation());
 				break;
 			case "e":
-				exit = false;
-				if (this.item != null && !hasItem())
-					this.getItem();
-				else
-					System.out.println("Não há nada para pegar");
+				exit = getItem(exit);
 				break;
 			default:
-				System.out.println("Escolha uma opção válida");
-				exit = false;
+				exit = invalidOption(exit);
 				break;
 		}
+			return exit;
+	}
+	
+	public void showOptions() {
+		boolean exit;
+		
+		
+		do {
+			exit = true;
+			showMenu();
+			exit = chooseOption(exit);
 			
 		} while(!exit);
 		
