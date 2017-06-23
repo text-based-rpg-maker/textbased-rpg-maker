@@ -105,20 +105,16 @@ public abstract class Location implements ScenarioState {
 			System.out.println("e) " + optionItem());
 	}
 	
-	@Override
-	public void showOptions() {
-		boolean exit;
-		@SuppressWarnings("resource")
-		Scanner keyboard = new Scanner(System.in);
+	public boolean chooseOption(boolean exit){
+		 		
 		String choice = "null";
 		
-		do {
-			exit = true;
-			showMenu();
+		@SuppressWarnings("resource")
+		Scanner keyboard = new Scanner(System.in);
+	
+		choice = keyboard.nextLine();
 			
-			choice = keyboard.nextLine();
-			
-			switch(choice) {
+		switch(choice) {
 			case "a":
 				exit = canMove(northLocation());
 				break;
@@ -138,13 +134,23 @@ public abstract class Location implements ScenarioState {
 				else
 					System.out.println("Não há nada para pegar");
 				break;
-			default:
+		default:
 				System.out.println("Escolha uma opção válida");
 				exit = false;
 				break;
 		}
+		return exit;
 			
-		} while(!exit);
+		} 
+	@Override
+	 	public void showOptions() {
+	 		boolean exit;
+	 		
+	 		do {
+	 			exit = true;
+				showMenu();
+	 			exit = chooseOption(exit);
+	 		}while(!exit);
 		
 	}
 
